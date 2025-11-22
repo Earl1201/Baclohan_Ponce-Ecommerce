@@ -7,6 +7,7 @@ use Filament\Resources\Pages\CreateRecord;
 
 use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource\RelationManagers;
+use App\Filament\Resources\UserResource\RelationManagers\OrdersRelationManager;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -83,7 +84,7 @@ class UserResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            OrdersRelationManager::class
         ];
     }
 
