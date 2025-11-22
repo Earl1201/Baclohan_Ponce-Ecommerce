@@ -4,6 +4,8 @@ module.exports = {
     "./resources/**/*.blade.php",
     "./resources/**/*.js",
     "./resources/**/*.vue",
+     'node_modules/preline/dist/*.js',
+"./pages/**/*.{js,ts,jsx,tsx,html}"
   ],
   darkMode: 'class',
   theme: {
