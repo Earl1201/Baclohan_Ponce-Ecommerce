@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Product extends Model
 {
@@ -14,7 +15,7 @@ class Product extends Model
         'brand_id',
         'name',
         'slug',
-        'images',
+        'image',
         'description',
         'price',
         'is_active',
@@ -24,21 +25,21 @@ class Product extends Model
     ];
 
     protected $casts = [
-        'images' => 'array',
+        'image' => 'array',
+        'price' => 'decimal:2',
+        'is_active' => 'boolean',
+        'is_featured' => 'boolean',
+        'in_stock' => 'boolean',
+        'on_sale' => 'boolean',
     ];
 
-    public function category()
+    public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
     }
 
-    public function brand()
+    public function brand(): BelongsTo
     {
         return $this->belongsTo(Brand::class);
-    }
-
-    public function orderItems()
-    {
-        return $this->hasMany(OrderItem::class);
     }
 }
