@@ -14,7 +14,7 @@ use Livewire\Attributes\Url;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 
-#[Title('Products - DCodeMania')]
+#[Title('Products - Earl')]
 class ProductsPage extends Component
 {
     use LivewireAlert;
