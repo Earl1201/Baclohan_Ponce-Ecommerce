@@ -7,6 +7,7 @@ module.exports = {
      'node_modules/preline/dist/*.js',
 "./pages/**/*.{js,ts,jsx,tsx,html}"
   ],
+  safelist: ['bg-red-500', 'text-white'],
   darkMode: 'class',
   theme: {
     extend: {},
