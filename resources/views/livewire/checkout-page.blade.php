@@ -2,7 +2,8 @@
 	<h1 class="mb-4 text-2xl font-bold text-gray-800 dark:text-white">
 		Checkout
 	</h1>
-	<div class="grid grid-cols-12 gap-4">
+	<form wire:submit.prevent="placeOrder">
+		<div class="grid grid-cols-12 gap-4">
 		<div class="col-span-12 md:col-span-12 lg:col-span-8">
 			<!-- Card -->
 			<div class="p-4 bg-white shadow rounded-xl sm:p-7 dark:bg-slate-900">
@@ -13,55 +14,89 @@
 					</h2>
 					<div class="grid grid-cols-2 gap-4">
 						<div>
-							<label class="block mb-1 text-gray-700 dark:text-white" for="first_name">
+							<label class="block mb-1 text-gray-700 dark:text-white" for="firt_name">
 								First Name
 							</label>
-							<input class="w-full px-3 py-2 border rounded-lg dark:bg-gray-700 dark:text-white dark:border-none" id="first_name" type="text">
+							<input wire:model='firt_name' class="w-full rounded-lg border py-2 px-3 dark:bg-gray-700
+							 dark:text-white dark:border-none @error('firt_name') border-red-500 @enderror" id="firt_name" type="text">
 							</input>
+                            @error('firt_name')
+							<div class="text-sm text-red-500">{{ $message}}</div>
+
+							@enderror
 						</div>
 						<div>
 							<label class="block mb-1 text-gray-700 dark:text-white" for="last_name">
 								Last Name
 							</label>
-							<input class="w-full px-3 py-2 border rounded-lg dark:bg-gray-700 dark:text-white dark:border-none" id="last_name" type="text">
+							<input wire:model='last_name' class="w-full rounded-lg border py-2 px-3 dark:bg-gray-700
+							dark:text-white dark:border-none @error('last_name') border-red-500 @enderror" id="last_name" type="text">
 							</input>
+                            @error('last_name')
+							<div class="text-sm text-red-500">{{ $message}}</div>
+
+							@enderror
 						</div>
 					</div>
 					<div class="mt-4">
 						<label class="block mb-1 text-gray-700 dark:text-white" for="phone">
 							Phone
 						</label>
-						<input class="w-full px-3 py-2 border rounded-lg dark:bg-gray-700 dark:text-white dark:border-none" id="phone" type="text">
+						<input wire:model='phone' class="w-full rounded-lg border py-2 px-3 dark:bg-gray-700
+						 dark:text-white dark:border-none @error('phone') border-red-500 @enderror" id="phone" type="text">
 						</input>
+                        @error('phone')
+							<div class="text-sm text-red-500">{{ $message}}</div>
+
+							@enderror
 					</div>
 					<div class="mt-4">
 						<label class="block mb-1 text-gray-700 dark:text-white" for="address">
 							Address
 						</label>
-						<input class="w-full px-3 py-2 border rounded-lg dark:bg-gray-700 dark:text-white dark:border-none" id="address" type="text">
+						<input wire:model='street_address' class="w-full rounded-lg border py-2 px-3 dark:bg-gray-700
+						 dark:text-white dark:border-none @error('street_address') border-red-500 @enderror" id="address" type="text">
 						</input>
+                        @error('street_address')
+							<div class="text-sm text-red-500">{{ $message}}</div>
+
+							@enderror
 					</div>
 					<div class="mt-4">
 						<label class="block mb-1 text-gray-700 dark:text-white" for="city">
 							City
 						</label>
-						<input class="w-full px-3 py-2 border rounded-lg dark:bg-gray-700 dark:text-white dark:border-none" id="city" type="text">
+						<input wire:model='city' class="w-full rounded-lg border py-2 px-3 dark:bg-gray-700
+						 dark:text-white dark:border-none @error('city') border-red-500 @enderror" id="city" type="text">
 						</input>
+                        @error('city')
+							<div class="text-sm text-red-500">{{ $message}}</div>
+
+							@enderror
 					</div>
 					<div class="grid grid-cols-2 gap-4 mt-4">
 						<div>
 							<label class="block mb-1 text-gray-700 dark:text-white" for="state">
 								State
 							</label>
-							<input class="w-full px-3 py-2 border rounded-lg dark:bg-gray-700 dark:text-white dark:border-none" id="state" type="text">
+							<input wire:model='state' class="w-full rounded-lg border py-2 px-3 dark:bg-gray-700
+							 dark:text-white dark:border-none @error('state') border-red-500 @enderror" id="state" type="text">
 							</input>
+                            @error('state')
+							<div class="text-sm text-red-500">{{ $message}}</div>
+
+							@enderror
 						</div>
 						<div>
 							<label class="block mb-1 text-gray-700 dark:text-white" for="zip">
 								ZIP Code
 							</label>
-							<input class="w-full px-3 py-2 border rounded-lg dark:bg-gray-700 dark:text-white dark:border-none" id="zip" type="text">
+							<input wire:model='zip_code' class="w-full px-3 py-2 border rounded-lg dark:bg-gray-700 dark:text-white dark:border-none " id="zip" type="text">
 							</input>
+                            @error('zip_code')
+							<div class="text-sm text-red-500">{{ $message}}</div>
+
+							@enderror
 						</div>
 					</div>
 				</div>
@@ -70,7 +105,8 @@
 				</div>
 				<ul class="grid w-full gap-6 md:grid-cols-2">
 					<li>
-						<input class="hidden peer" id="hosting-small" name="hosting" required="" type="radio" value="hosting-small" />
+						<input wire:model='payment_method' class="hidden peer" id="hosting-small"
+						 required="" type="radio" value="cod" />
 						<label class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700" for="hosting-small">
 							<div class="block">
 								<div class="w-full text-lg font-semibold">
@@ -84,7 +120,8 @@
 						</label>
 					</li>
 					<li>
-						<input class="hidden peer" id="hosting-big" name="hosting" type="radio" value="hosting-big">
+						<input wire:model='payment_method' class="hidden peer" id="hosting-big"
+						type="radio" value="stripe">
 						<label class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-blue-500 peer-checked:border-blue-600 peer-checked:text-blue-600 hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700" for="hosting-big">
 							<div class="block">
 								<div class="w-full text-lg font-semibold">
@@ -99,6 +136,10 @@
 						</input>
 					</li>
 				</ul>
+                @error('payment_method')
+				<div class="text-sm text-red-500">{{ $message}}</div>
+
+				@enderror
 			</div>
 			<!-- End Card -->
 		</div>
@@ -112,7 +153,7 @@
 						Subtotal
 					</span>
 					<span>
-						45,000.00
+						{{ Number::currency($grand_total, 'INR') }}
 					</span>
 				</div>
 				<div class="flex justify-between mb-2 font-bold">
@@ -120,7 +161,7 @@
 						Taxes
 					</span>
 					<span>
-						0.00
+						{{ Number::currency(0, 'INR') }}
 					</span>
 				</div>
 				<div class="flex justify-between mb-2 font-bold">
@@ -128,21 +169,21 @@
 						Shipping Cost
 					</span>
 					<span>
-						0.00
+						{{ Number::currency(0, 'INR') }}
 					</span>
 				</div>
 				<hr class="h-1 my-4 rounded bg-slate-400">
 				<div class="flex justify-between mb-2 font-bold">
 					<span>
-						Grand Total
+						 TotalGrand
 					</span>
 					<span>
-						45,000.00
+						{{ Number::currency($grand_total, 'INR') }}
 					</span>
 				</div>
 				</hr>
 			</div>
-			<button class="w-full p-3 mt-4 text-lg text-white bg-green-500 rounded-lg hover:bg-green-600">
+			<button type="submit" class="w-full p-3 mt-4 text-lg text-white bg-green-500 rounded-lg hover:bg-green-600">
 				Place Order
 			</button>
 			<div class="p-4 mt-4 bg-white shadow rounded-xl sm:p-7 dark:bg-slate-900">
@@ -150,65 +191,31 @@
 					BASKET SUMMARY
 				</div>
 				<ul class="divide-y divide-gray-200 dark:divide-gray-700" role="list">
-					<li class="py-3 sm:py-4">
+					@foreach ($cart_items as $ci)
+					<li class="py-3 sm:py-4" wire:key='{{ $ci['product_id'] }}'>
 						<div class="flex items-center">
 							<div class="flex-shrink-0">
-								<img alt="Neil image" class="w-12 h-12 rounded-full" src="https://iplanet.one/cdn/shop/files/iPhone_15_Pro_Max_Blue_Titanium_PDP_Image_Position-1__en-IN_1445x.jpg?v=1695435917">
+								<img alt="{{ $ci['name'] }}" class="w-12 h-12 rounded-full"
+								src="{{ url('storage', $ci['image']) }}">
 								</img>
 							</div>
 							<div class="flex-1 min-w-0 ms-4">
 								<p class="text-sm font-medium text-gray-900 truncate dark:text-white">
-									Apple iPhone 15 Pro Max
+									{{ $ci['name'] }}
 								</p>
 								<p class="text-sm text-gray-500 truncate dark:text-gray-400">
-									Quantity: 1
+									Quantity: {{ $ci['quantity'] }}
 								</p>
 							</div>
 							<div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-								$320
+								{{ Number::currency($ci['total_amount'], 'INR') }}
 							</div>
 						</div>
 					</li>
-					<li class="py-3 sm:py-4">
-						<div class="flex items-center">
-							<div class="flex-shrink-0">
-								<img alt="Neil image" class="w-12 h-12 rounded-full" src="https://iplanet.one/cdn/shop/files/iPhone_15_Pro_Max_Blue_Titanium_PDP_Image_Position-1__en-IN_1445x.jpg?v=1695435917">
-								</img>
-							</div>
-							<div class="flex-1 min-w-0 ms-4">
-								<p class="text-sm font-medium text-gray-900 truncate dark:text-white">
-									Apple iPhone 15 Pro Max
-								</p>
-								<p class="text-sm text-gray-500 truncate dark:text-gray-400">
-									Quantity: 1
-								</p>
-							</div>
-							<div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-								$320
-							</div>
-						</div>
-					</li>
-					<li class="py-3 sm:py-4">
-						<div class="flex items-center">
-							<div class="flex-shrink-0">
-								<img alt="Neil image" class="w-12 h-12 rounded-full" src="https://iplanet.one/cdn/shop/files/iPhone_15_Pro_Max_Blue_Titanium_PDP_Image_Position-1__en-IN_1445x.jpg?v=1695435917">
-								</img>
-							</div>
-							<div class="flex-1 min-w-0 ms-4">
-								<p class="text-sm font-medium text-gray-900 truncate dark:text-white">
-									Apple iPhone 15 Pro Max
-								</p>
-								<p class="text-sm text-gray-500 truncate dark:text-gray-400">
-									Quantity: 1
-								</p>
-							</div>
-							<div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-								$320
-							</div>
-						</div>
-					</li>
+                    @endforeach
 				</ul>
 			</div>
 		</div>
 	</div>
+    </form>
 </div>
