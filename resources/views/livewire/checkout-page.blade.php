@@ -14,13 +14,13 @@
 					</h2>
 					<div class="grid grid-cols-2 gap-4">
 						<div>
-							<label class="block mb-1 text-gray-700 dark:text-white" for="firt_name">
+							<label class="block mb-1 text-gray-700 dark:text-white" for="first_name">
 								First Name
 							</label>
-							<input wire:model='firt_name' class="w-full rounded-lg border py-2 px-3 dark:bg-gray-700
-							 dark:text-white dark:border-none @error('firt_name') border-red-500 @enderror" id="firt_name" type="text">
+							<input wire:model='first_name' class="w-full rounded-lg border py-2 px-3 dark:bg-gray-700
+							 dark:text-white dark:border-none @error('first_name') border-red-500 @enderror" id="first_name" type="text">
 							</input>
-                            @error('firt_name')
+                            @error('first_name')
 							<div class="text-sm text-red-500">{{ $message}}</div>
 
 							@enderror
