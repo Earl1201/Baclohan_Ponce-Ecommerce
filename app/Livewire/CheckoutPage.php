@@ -3,10 +3,12 @@
 namespace App\Livewire;
 
 use App\Helpers\CartManagement;
+use App\Mail\OrderPlaced;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 use App\Models\Address;
 use App\Models\Order;
+use Illuminate\Support\Facades\Mail;
 use Stripe\Checkout\Session;
 use Stripe\Stripe;
 
@@ -96,7 +98,7 @@ class CheckoutPage extends Component
             'customer_email' => auth()->user()->email,
             'line_items' => $line_items,
             'mode' => 'payment',
-            'success_url' => route('success'). '?session_id={{CHECKOUT_SESSION_ID }}',
+            'success_url' => route('success'). '?session_id={CHECKOUT_SESSION_ID}',
             'cancel_url' => route('cancel'),
         ]);
 
@@ -112,6 +114,7 @@ class CheckoutPage extends Component
     $address->save();
     $order->items()->createMany($cart_items);
     CartManagement::cleanCartItems();
+    Mail::to(request()->user())->send(new OrderPlaced($order));
     return redirect($redirect_url);
 
 

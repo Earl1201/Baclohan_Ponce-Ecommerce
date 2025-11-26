@@ -1,7 +1,7 @@
 import './bootstrap';
 import 'preline';
 
-// This is the key part - reinitialize Preline on every Livewire navigation
+// For Livewire: reinitialize Preline after navigation
 document.addEventListener('livewire:navigated', () => {
-    window.HSStaticMethods.autoInit();
+    if (window.Preline) window.Preline.init();
 });
