@@ -6,7 +6,18 @@ module.exports = {
     "./resources/**/*.vue",
     "node_modules/preline/dist/*.js", // Make sure Preline classes are included
   ],
-  safelist: ['bg-red-500', 'text-white'], // optional
+  safelist: [
+  'bg-blue-500',
+  'bg-yellow-500',
+  'bg-green-500',
+  'bg-green-700',
+  'bg-red-500',
+  'bg-red-700',
+  'bg-slate-700',
+  'text-white',
+  'shadow',
+  'rounded'
+],
   darkMode: 'class',
   theme: {
     extend: {},
