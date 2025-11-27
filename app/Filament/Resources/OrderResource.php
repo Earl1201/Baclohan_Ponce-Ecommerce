@@ -220,7 +220,7 @@ class OrderResource extends Resource
                     'new' => 'New',
                     'processing' => 'Processing',
                     'shipped' => 'Shipped',
-                    'delivered' => 'Delivered',
+                    'delivered'  => 'Delivered',
                     'cancelled' => 'Cancelled',
                 ])
                     ->searchable()
